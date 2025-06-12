@@ -1,13 +1,85 @@
 # Route Animate
 
-Camera animate a route
+一个基于 React + Mapbox 的路线动画展示工具，支持多种交通方式的路线规划和动画展示。
 
-[https://acarnagey.github.io/route-animate/](https://acarnagey.github.io/route-animate/)
+## 功能特点
 
-Refs: https://www.mapbox.com/blog/building-cinematic-route-animations-with-mapboxgl
-https://github.com/mapbox/impact-tools/tree/master/journey-animation-sequence
-https://docs.mapbox.com/mapbox-gl-js/example/query-terrain-elevation/
-https://docs.mapbox.com/help/getting-started/directions/
+- 🗺️ 基于 Mapbox GL JS 的地图展示
+- 🔍 支持地名/经纬度输入，带自动补全功能
+- 📍 支持地图点选选择出发地和目的地
+- 🚗 支持多种交通方式：
+  - 驾车
+  - 步行
+  - 骑行
+  - 飞行
+- 🎯 自定义交通图标动画
+- ⚡ 智能动画时长调整（长距离自动加速）
+- 🎨 美观的 UI 界面
+
+## 本地开发
+
+### 环境要求
+
+- Node.js 14.0 或更高版本
+- npm 6.0 或更高版本
+
+### 安装依赖
+
+```bash
+npm install
+```
+
+### 配置环境变量
+
+在项目根目录创建 `.env` 文件，添加以下环境变量：
+
+```env
+REACT_APP_MAPBOX=你的_Mapbox_访问令牌
+GAODE_KEY=你的_高德地图_API_密钥
+```
+
+### 启动开发服务器
+
+```bash
+npm start
+```
+
+访问 http://localhost:3000 查看效果。
+
+## 部署
+
+### Vercel 部署
+
+1. Fork 本仓库到你的 GitHub 账号
+2. 在 [Vercel](https://vercel.com) 导入项目
+3. 配置环境变量：
+   - `REACT_APP_MAPBOX`
+   - `GAODE_KEY`
+4. 点击部署
+
+### 构建生产版本
+
+```bash
+npm run build
+```
+
+## 使用说明
+
+1. 输入出发地和目的地（支持地名或经纬度）
+2. 选择交通方式（驾车/步行/骑行/飞行）
+3. 点击搜索按钮获取路线
+4. 查看路线动画效果
+
+## 技术栈
+
+- React 18
+- Mapbox GL JS
+- D3.js
+- Turf.js
+
+## 许可证
+
+MIT
 
 # Export to mp4
 
