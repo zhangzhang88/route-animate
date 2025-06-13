@@ -50,6 +50,7 @@ const icons = {
 const App = () => {
   const mapContainerRef = useRef(null);
   const mapRef = useRef(null);
+  const audioRef = useRef(null);
   const [isFinished, setIsFinished] = useState(false);
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -139,7 +140,7 @@ const App = () => {
     throw new Error("未找到路线");
   };
 
-  // 修改handleGenerateRoute，动画时移动marker
+  // 修改handleGenerateRoute，添加音频播放
   const handleGenerateRoute = async () => {
     if (!from || !to) {
       alert("请输入出发地和目的地");
@@ -148,6 +149,12 @@ const App = () => {
     setLoading(true);
     setIsFinished(false);
     try {
+      // 播放音频
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play();
+      }
+      
       const fromCoord = await gaodeGeocode(from);
       const toCoord = await gaodeGeocode(to);
       // 用Mapbox Directions API获取路线
@@ -209,8 +216,11 @@ const App = () => {
   };
 
   useEffect(() => {
+    // 初始化音频
+    audioRef.current = new Audio('/audio/route.mp3');
+    audioRef.current.load();
+    
     // 页面初始不自动播放动画
-    // 只初始化地图，不加载路线、不播放动画
     if (mapRef.current) return;
     mapRef.current = new mapboxgl.Map(getMapOptions(mapContainerRef.current));
     mapRef.current.addControl(new mapboxgl.NavigationControl());
