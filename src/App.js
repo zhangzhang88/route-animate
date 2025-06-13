@@ -217,7 +217,7 @@ const App = () => {
 
   useEffect(() => {
     // 初始化音频
-    audioRef.current = new Audio('/audio/route.mp3');
+    audioRef.current = new Audio('/audio/route.MP3');
     audioRef.current.load();
     
     // 页面初始不自动播放动画
